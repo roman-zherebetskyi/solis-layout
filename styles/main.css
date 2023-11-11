@@ -12,29 +12,44 @@ body {
   min-width: 250px;
 }
 
-.header {
+.header, .menu {
   padding-top: 2.084%;
   background-image: url(../images/first-screen-image.jpg);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
 }
-.header__content {
+.header__content, .menu__content {
   padding-block: 10.417%;
 }
-.header--dark {
+.header--dark, .menu--dark {
   background-image: url(../images/first-screen-image-dark.jpg);
 }
-.header__content {
+.header__top-bar, .menu__top-bar {
+  font-size: 0;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.24) 24.1%, rgba(255, 255, 255, 0) 47.19%);
+  -webkit-backdrop-filter: blur(4.5px);
+          backdrop-filter: blur(4.5px);
+  padding-inline: 9.375%;
+  padding-block: 1.667%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__top-bar--dark, .menu__top-bar--dark {
+  background: rgba(255, 255, 255, 0.02);
+}
+.header__content, .menu__content {
   padding-inline: 9.375%;
   width: clamp(200px, 70%, 530px);
 }
-.header__content .text {
+.header__content .text, .menu__content .text {
   padding-top: 3.775%;
   padding-bottom: 9.434%;
 }
 @media (max-width: 890px) {
-  .header {
+  .header, .menu {
     background-position: 20% top;
   }
 }
@@ -59,65 +74,20 @@ body {
 }
 
 .nav {
-  font-size: 0;
-  background: linear-gradient(270deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.24) 24.1%, rgba(255, 255, 255, 0) 47.19%);
-  -webkit-backdrop-filter: blur(4.5px);
-          backdrop-filter: blur(4.5px);
-  padding-inline: 9.375%;
-  padding-block: 1.667%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.nav--dark {
-  background: rgba(255, 255, 255, 0.02);
-}
-.nav__burger-menu {
-  stroke: #fff;
-  transition: all 0.2s linear;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-}
-.nav__burger-menu:focus {
-  outline-color: #F1897B;
-  outline-offset: 8px;
-}
-.nav__burger-menu--dark:focus {
-  outline-color: #53F3CD;
-}
-@media (max-width: 440px) {
-  .nav__burger-menu {
-    opacity: 0.7;
-    background-color: #F1897B;
-  }
-  .nav__burger-menu--dark {
-    opacity: 1;
-    background-color: transparent;
-  }
-}
-@media (min-width: 890px) {
-  .nav__burger-menu {
-    display: none;
-  }
-}
-.nav__list {
   display: none;
 }
 @media (min-width: 890px) {
-  .nav__list {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 30px;
+  .nav {
+    display: block;
   }
 }
-.nav__item {
+.nav__list {
   display: flex;
-  flex-wrap: wrap;
-  width: -moz-max-content;
-  width: max-content;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+.nav__item {
   position: relative;
 }
 .nav__item::after {
@@ -158,6 +128,41 @@ body {
 }
 .nav__link--dark:focus {
   outline-color: #53F3CD;
+}
+
+.burger-menu,
+.x-mark-btn {
+  stroke: #fff;
+  transition: all 0.2s linear;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  opacity: 0.7;
+  background-color: #F1897B;
+}
+.burger-menu:focus,
+.x-mark-btn:focus {
+  outline-color: #F1897B;
+  outline-offset: 8px;
+}
+.burger-menu--dark:focus,
+.x-mark-btn--dark:focus {
+  outline-color: #53F3CD;
+}
+.burger-menu--dark,
+.x-mark-btn--dark {
+  opacity: 1;
+  background-color: transparent;
+}
+@media (min-width: 890px) {
+  .burger-menu,
+  .x-mark-btn {
+    display: none;
+  }
+}
+
+.x-mark-btn {
+  display: none;
 }
 
 .text {
@@ -239,4 +244,45 @@ body {
 }
 .button--dark:hover::after {
   background-color: #02E0AB;
+}
+
+.menu {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s linear;
+}
+.menu:target {
+  opacity: 1;
+  pointer-events: all;
+}
+.menu__top-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.menu__top-links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu .x-mark-btn {
+  display: block;
+}
+.menu .nav {
+  display: block;
+}
+.menu .nav__list {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 890px) {
+  .menu {
+    display: none;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -6,7 +6,7 @@ body {
   min-width: 250px;
 }
 
-.header {
+.header, .menu {
   @include paddings($header:true);
 
   background-image: url(../images/first-screen-image.jpg);
@@ -16,6 +16,20 @@ body {
 
   &--dark {
     background-image: url(../images/first-screen-image-dark.jpg);
+  }
+
+  &__top-bar {
+    font-size: 0;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.24) 24.1%, rgba(255, 255, 255, 0.00) 47.19%);
+    backdrop-filter: blur(4.5px);
+
+    @include paddings($container:true, $nav:true);
+    @include flex(row);
+    justify-content: space-between;
+
+    &--dark {
+      background: rgba(255, 255, 255, 0.02);
+    }
   }
 
   &__content {
@@ -47,52 +61,17 @@ body {
 }
 
 .nav {
-  font-size: 0;
-  background: linear-gradient(270deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.24) 24.1%, rgba(255, 255, 255, 0.00) 47.19%);
-  backdrop-filter: blur(4.5px);
-
-  @include paddings($container:true, $nav:true);
-  @include flex(row);
-  justify-content: space-between;
-
-  &--dark {
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  &__burger-menu {
-    stroke: $c-white;
-    @include focus;
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-
-    @media (max-width:440px) {
-      opacity: .7;
-      background-color: $c-primary-coral;
-
-      &--dark {
-        opacity: 1;
-        background-color: transparent;
-      }
-    }
-    @media (min-width: 890px) {
-      display: none;
-    }
+  display: none;
+  @media (min-width:890px) {
+    display: block;
   }
 
   &__list {
-    display: none;
-
-    @media (min-width:890px) {
-      @include flex(row);
-      gap: 30px;
-    }
+    @include flex(row);
+    gap: 30px;
   }
 
   &__item {
-    display: flex;
-    flex-wrap: wrap;
-    width: max-content;
     position: relative;
 
     &::after {
@@ -120,6 +99,29 @@ body {
     @include link;
     @include focus;
   }
+}
+
+.burger-menu,
+.x-mark-btn {
+  stroke: $c-white;
+  @include focus;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+
+  opacity: .7;
+  background-color: $c-primary-coral;
+  &--dark {
+    opacity: 1;
+    background-color: transparent;
+  }
+  
+  @media (min-width: 890px) {
+    display: none;
+  }
+}
+.x-mark-btn {
+  display: none;
 }
 
 .text {
@@ -207,6 +209,45 @@ body {
         background-color: $c-hover-neon;
       }
     }
+  }
+}
+
+.menu {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: $transition;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+  &__top-bar {
+    @include flex(column);
+    gap: 40px;
+  }
+  &__top-links {
+    width: 100%;
+    @include flex(row);
+    justify-content: space-between;
+  }
+  .x-mark-btn {
+    display: block;
+  }
+  .nav {
+    display: block;
+
+    &__list {
+      @include flex(column);
+    }
+  }
+  @media (min-width:890px) {
+    display: none;
   }
 }
 

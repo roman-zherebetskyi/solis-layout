@@ -1,0 +1,242 @@
+body,
+h1,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+/* #region COLORS*/
+/* #endregion*/
+body {
+  min-width: 250px;
+}
+
+.header {
+  padding-top: 2.084%;
+  background-image: url(../images/first-screen-image.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+.header__content {
+  padding-block: 10.417%;
+}
+.header--dark {
+  background-image: url(../images/first-screen-image-dark.jpg);
+}
+.header__content {
+  padding-inline: 9.375%;
+  width: clamp(200px, 70%, 530px);
+}
+.header__content .text {
+  padding-top: 3.775%;
+  padding-bottom: 9.434%;
+}
+@media (max-width: 890px) {
+  .header {
+    background-position: 20% top;
+  }
+}
+
+.logo {
+  fill: #fff;
+  transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.logo:hover {
+  fill: #F1897B;
+}
+.logo--dark:hover {
+  fill: #53F3CD;
+}
+.logo:focus {
+  outline-color: #F1897B;
+  outline-offset: 8px;
+}
+.logo--dark:focus {
+  outline-color: #53F3CD;
+}
+
+.nav {
+  font-size: 0;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.24) 24.1%, rgba(255, 255, 255, 0) 47.19%);
+  -webkit-backdrop-filter: blur(4.5px);
+          backdrop-filter: blur(4.5px);
+  padding-inline: 9.375%;
+  padding-block: 1.667%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav--dark {
+  background: rgba(255, 255, 255, 0.02);
+}
+.nav__burger-menu {
+  stroke: #fff;
+  transition: all 0.2s linear;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+.nav__burger-menu:focus {
+  outline-color: #F1897B;
+  outline-offset: 8px;
+}
+.nav__burger-menu--dark:focus {
+  outline-color: #53F3CD;
+}
+@media (max-width: 440px) {
+  .nav__burger-menu {
+    opacity: 0.7;
+    background-color: #F1897B;
+  }
+  .nav__burger-menu--dark {
+    opacity: 1;
+    background-color: transparent;
+  }
+}
+@media (min-width: 890px) {
+  .nav__burger-menu {
+    display: none;
+  }
+}
+.nav__list {
+  display: none;
+}
+@media (min-width: 890px) {
+  .nav__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+}
+.nav__item {
+  display: flex;
+  flex-wrap: wrap;
+  width: -moz-max-content;
+  width: max-content;
+  position: relative;
+}
+.nav__item::after {
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-color: #F1897B;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+.nav__item:hover::after {
+  opacity: 0.3;
+}
+.nav__item--dark::after {
+  background: linear-gradient(97deg, #53F3CD 6.73%, rgba(83, 243, 205, 0) 116.9%);
+}
+.nav__link {
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.95px;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #262A3F;
+  transition: all 0.2s linear;
+}
+.nav__link--dark {
+  color: #fff;
+}
+.nav__link:focus {
+  outline-color: #F1897B;
+  outline-offset: 8px;
+}
+.nav__link--dark:focus {
+  outline-color: #53F3CD;
+}
+
+.text {
+  font-family: Lato;
+  font-size: clamp(14px, 2vw, 18px);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 144.444%;
+  opacity: 0.8;
+  color: #262A3F;
+}
+.text--dark {
+  color: #fff;
+}
+.text__title {
+  font-family: Playfair Display;
+  font-size: clamp(20px, 4vw, 44px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 118.182%;
+  color: #262A3F;
+}
+.text__title em {
+  color: #85BBB1;
+}
+.text__title--dark {
+  color: #fff;
+}
+.text__title--dark em {
+  color: #689FF2;
+}
+
+.button {
+  transition: all 0.2s linear;
+  font-family: Lato;
+  font-size: clamp(14px, 2vw, 20px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /*20px*/
+  letter-spacing: 0.1111111vw;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #F1897B;
+  transition: all 0.2s linear;
+  position: relative;
+}
+.button:focus {
+  outline-color: #F1897B;
+  outline-offset: 8px;
+}
+.button--dark:focus {
+  outline-color: #53F3CD;
+}
+.button::after {
+  position: absolute;
+  bottom: -5%;
+  left: 8.5%;
+  content: "";
+  height: 54%;
+  width: 97%;
+  background-color: #F1897B;
+  opacity: 0.3;
+  transition: all 0.2s linear;
+}
+.button:hover {
+  color: #E54F3A;
+}
+.button:hover::after {
+  background-color: #E54F3A;
+}
+.button--dark {
+  color: #53F3CD;
+}
+.button--dark::after {
+  background-color: #53F3CD;
+}
+.button--dark:hover {
+  color: #02E0AB;
+}
+.button--dark:hover::after {
+  background-color: #02E0AB;
+}/*# sourceMappingURL=main.css.map */

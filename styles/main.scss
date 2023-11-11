@@ -1,0 +1,213 @@
+@import './utils/normalize';
+@import './utils/vars';
+@import './utils/mixins';
+
+body {
+  min-width: 250px;
+}
+
+.header {
+  @include paddings($header:true);
+
+  background-image: url(../images/first-screen-image.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+
+  &--dark {
+    background-image: url(../images/first-screen-image-dark.jpg);
+  }
+
+  &__content {
+    @include paddings($container:true);
+    width: clamp(200px, 70%, 530px);
+
+    .text {
+      padding-top: 3.775%;
+      padding-bottom: 9.434%;
+    }
+  }
+
+  @media (max-width: 890px) {
+    background-position: 20% top;
+  }
+}
+
+.logo {
+  fill: #fff;
+  transition: $transition;
+
+  &:hover {
+    fill: $c-primary-coral;
+  }
+  &--dark:hover {
+    fill: $c-primary-neon;
+  }
+  @include focus;
+}
+
+.nav {
+  font-size: 0;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.24) 24.1%, rgba(255, 255, 255, 0.00) 47.19%);
+  backdrop-filter: blur(4.5px);
+
+  @include paddings($container:true, $nav:true);
+  @include flex(row);
+  justify-content: space-between;
+
+  &--dark {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  &__burger-menu {
+    stroke: $c-white;
+    @include focus;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+
+    @media (max-width:440px) {
+      opacity: .7;
+      background-color: $c-primary-coral;
+
+      &--dark {
+        opacity: 1;
+        background-color: transparent;
+      }
+    }
+    @media (min-width: 890px) {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: none;
+
+    @media (min-width:890px) {
+      @include flex(row);
+      gap: 30px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    width: max-content;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+
+      content: '';
+      height: 3px;
+      width: 100%;
+
+      background-color: $c-primary-coral;
+      opacity: 0;
+      transition: $transition;
+    }
+    &:hover::after {
+      opacity: .3;
+    }
+    &--dark::after {
+      background: linear-gradient(97deg, #53F3CD 6.73%, rgba(83, 243, 205, 0.00) 116.9%);
+    }
+  }
+
+  &__link {
+    @include link;
+    @include focus;
+  }
+}
+
+.text {
+  font-family: Lato;
+  font-size: clamp(14px, 2vw, 18px);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 144.444%;
+  opacity: .8;
+
+  color: $c-primary-dark-blue;
+
+  &--dark {
+    color: $c-white;
+  }
+
+  &__title {
+    font-family: Playfair Display;
+    font-size: clamp(20px, 4vw, 44px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 118.182%;
+
+    color: $c-primary-dark-blue;
+
+    em {
+      color: $c-text--green;
+    }
+    &--dark {
+      color: $c-white;
+      em {
+        color: $c-text--blue;
+      }
+    }
+  }
+}
+
+.button {
+  @include focus;
+  font-family: Lato;
+  font-size: clamp(14px, 2vw, 20px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /*20px*/
+  letter-spacing: .1111111vw;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: $c-primary-coral;
+  transition: $transition;
+
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: -5%;
+    left: 8.5%;
+    content: '';
+    height: 54%;
+    width: 97%;
+    background-color: $c-primary-coral;
+    opacity: .3;
+    transition: $transition;
+  }
+  
+  &:hover {
+    color: $c-hover-coral;
+
+    &::after {
+      background-color: $c-hover-coral;
+    }
+  }
+
+  &--dark {
+    color: $c-primary-neon;
+
+    &::after {
+      background-color: $c-primary-neon;
+    }
+
+    &:hover {
+      color: $c-hover-neon;
+      
+      &::after {
+        background-color: $c-hover-neon;
+      }
+    }
+  }
+}
+
+

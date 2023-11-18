@@ -1,18 +1,103 @@
-@mixin paddings($container: false, $header:false, $nav: false) {
+@mixin paddings($container: false, 
+                $header:false, 
+                $benefits:false,
+                $quote:false,
+                $video:false,
+                $promises:false,
+                $footer:false) {
 
   @if $container {
     padding-inline: 9.375%;
   }
   @if $header {
     padding-top: 2.084%;
+    @media (min-width:1024px) {
+      padding-bottom: clamp(60px, 19.7%, 283.672px);
+    }
 
+    &__top-bar {
+      padding-block: clamp(18px, 1.67%, 24px);
+    }
     &__content {
-      padding-block: 10.417%;
+      padding-block: clamp(30px, 10.417%, 150px);
     }
   }
-  @if $nav {
-    padding-block: 1.667%;
+  @if $benefits {
+    &__card {
+      padding-block: clamp(14px, 5vw, 24px);
+      @media (min-width: 890px) {
+        padding-top: clamp(28px, 5vw, 50px);
+        padding-bottom: clamp(14px, 5vw, 20px);
+        padding-inline: clamp(18px, 5vw, 30px);
+      }
+    }
   }
+  @if $quote {
+    article {
+      padding-block: clamp(30px, 15vw, 8.548%);
+
+      h2, p {
+        @include paddings($container:true);
+      }
+    }
+
+    @media (min-width:890px) {
+      @include paddings($container:true);
+
+      article {
+        h2, p {
+          padding-inline: 13.676%;
+        }
+      }
+    }
+  }
+  @if $video {
+    @include paddings($container:true);
+    @media (min-width:890px) {
+      padding-inline: 16.32%;
+
+      &__player {
+        padding: clamp(16px, 100vw, 2.0833vw);
+        padding-right: clamp(28px, 100vw, 4.8611vw);
+      }
+    }
+  }
+  @if $promises{
+    &__list {
+      @media (min-width:900px) {
+        padding-left: 70px;
+        padding-block: 75px;
+      }
+    }
+  }
+  @if $footer {
+    &__content {
+      padding-block: 30px;
+    }
+  }
+}
+
+@mixin divider {
+  position: relative;
+  &::before,
+  &--dark::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    content: '';
+    
+    background-color: $c-text--gray;
+  }
+  &--dark::before {
+    background-color: $c-dark-gray;
+  }
+}
+
+@mixin size($value) {
+  width: $value;
+  height: $value;
 }
 
 @mixin flex($value) {
@@ -21,37 +106,54 @@
   @if $value == column {
     flex-direction: column;
   }
-
+  
   @if $value == row {
     flex-direction: row;
-    align-items: center;
-  }
-}
-
-@mixin link {
-  font-family: Lato;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: .95px;
-  text-decoration: none;
-  text-transform: capitalize;
-
-  color: $c-primary-dark-blue;
-
-  &--dark {
-    color: $c-white;
   }
 }
 
 @mixin focus {
+  outline-color: transparent;
   transition: $transition;
+
   &:focus {
-    outline-color: $c-primary-coral;
-    outline-offset: 8px;
+    outline-color: $c-coral;
+    outline-offset: 6px;
   }
   &--dark:focus {
-    outline-color: $c-primary-neon;
+    outline-color: $c-neon;
+  }
+}
+
+@mixin font($value, $Playfair:false, $Lato:false) {
+
+  @if $Playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+  }
+
+  @if $Lato {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+  }
+
+  font-size: clamp(calc($value / 1.1), 4vw, $value);
+  font-style: normal;
+  color: $c-dark-blue;
+
+  em {
+    color: $c-text--green;
+  }
+
+  &--dark {
+    color: $c-white;
+
+    em {
+      color: $c-text--blue;
+    }
+
+    &::before {
+      color: $c-white;
+    }
   }
 }
